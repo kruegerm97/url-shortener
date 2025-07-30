@@ -11,10 +11,10 @@ class UrlShortenerServiceTest {
     @Test
     fun `shorten and resolve URL`() {
         val originalUrl = "https://www.youtube.com"
-        val hash = service.shortenUrl(originalUrl)
-        val resolvedUrl = service.resolveUrl(hash)
+        val shortUrl = service.shortenUrl(originalUrl)
+        val result = service.resolveUrl(shortUrl.hash)
 
-        assertEquals(originalUrl, resolvedUrl, "The resolved URL should match the original URL")
+        assertEquals(originalUrl, result?.originalUrl, "The resolved URL should match the original URL")
     }
 
     @Test
