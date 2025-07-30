@@ -39,10 +39,10 @@ class UrlShortenerServiceTest {
         val url1 = "https://www.google.com"
         val url2 = "https://www.github.com"
 
-        val hash1 = service.shortenUrl(url1)
-        val hash2 = service.shortenUrl(url2)
+        val result1 = service.shortenUrl(url1)
+        val result2 = service.shortenUrl(url2)
 
-        assertNotEquals(hash1, hash2, "Different URLs should produce different hashes")
+        assertNotEquals(result1.hash, result2.hash, "Different URLs should produce different hashes")
     }
 
     @Test
