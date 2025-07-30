@@ -31,6 +31,7 @@ dependencies {
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("org.hashids:hashids:1.0.3")
+	testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
 }
 
 kotlin {
@@ -47,4 +48,8 @@ allOpen {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	testLogging {
+		events("passed", "failed", "skipped")
+		showStandardStreams = true
+	}
 }

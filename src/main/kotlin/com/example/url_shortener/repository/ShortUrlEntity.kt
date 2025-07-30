@@ -7,7 +7,7 @@ import jakarta.persistence.*
 data class ShortUrlEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long = 0,
     @Column(name = "original_url", nullable = false)
     val originalUrl: String,
     @Column(name = "hash", nullable = false, unique = true)
