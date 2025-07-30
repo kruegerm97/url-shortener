@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service
 import org.hashids.Hashids
 import com.example.url_shortener.model.ShortUrl
 import com.example.url_shortener.repository.UrlRepository
+import com.example.url_shortener.repository.ShortUrlEntity
+import kotlin.math.absoluteValue
 
 @Service
 class UrlShortenerService(
@@ -16,7 +18,13 @@ class UrlShortenerService(
             return ShortUrl(it.originalUrl, it.hash)
         }
 
-        val hash = hashids.encode(originalUrl.hashCode().toLong())
+        val hash = hashids.encode(originalUrl.hashCode().toLong().absoluteValue)
+        val entity = ShortUrlEntity(
+            originalUrl = originalUrl,
+            hash = hash
+        )
+        repository.save(entity)
+
         return ShortUrl(originalUrl, hash)
     }
 
